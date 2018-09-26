@@ -25,6 +25,6 @@ test:
 	cargo test --all
 
 open-docs:
-	cargo doc --open -p common
+	cargo doc --open -p leanshot
 outdated-deps:
 	cargo outdated -R

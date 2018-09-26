@@ -22,7 +22,6 @@ pub mod imlib2;
 pub mod xlib;
 
 use errors::ScreenshotError;
-use structopt::StructOpt;
 use xlib::Rectangle;
 
 pub use capture::capture;
