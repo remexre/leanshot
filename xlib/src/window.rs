@@ -6,6 +6,14 @@ use x11::xlib as x;
 
 use {Atom, Display, Drawable, GetDisplay, Image, Rectangle, X11Error};
 
+/// The platform-native unsigned integer.
+#[cfg(target_pointer_width = "32")]
+type Uplat = u32;
+
+/// The platform-native unsigned integer.
+#[cfg(target_pointer_width = "64")]
+type Uplat = u64;
+
 /// A wrapper around a window handle.
 #[derive(Copy, Clone, PartialEq, Eq)]
 pub struct Window {
@@ -54,7 +62,7 @@ impl Window {
     }
 
     /// Create a new Window instance from an existing ID
-    pub fn create_from_handle(display: &Display, id: u64) -> Result<Window, X11Error> {
+    pub fn create_from_handle(display: &Display, id: Uplat) -> Result<Window, X11Error> {
         Ok(Window {
             display: display.as_raw(),
             inner: id,
